@@ -5,7 +5,7 @@ Dimitri VINET's OS And Programming repository.
 
 # USAGE:
 
-To use a .c file, execute the command:
+To use a .c file, execute the command:\n
     make <file name (without extension)>
     ex: 
     '''
