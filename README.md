@@ -17,7 +17,10 @@ ex:
     
 This unmounts a directory if one with the same name exists and is mounted, deletes then recreates it, and (re-)mounts the new filesystem to it.
 
+
+
 To clean all directories and their mounts, use:
+
     '''
     make clean
     '''
