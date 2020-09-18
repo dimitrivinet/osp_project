@@ -9,7 +9,8 @@ To use a .c file, execute the command:
 
    
     make <file name (without extension)>
-    ex: 
+    
+ex:
     
     make hello
     
