@@ -5,10 +5,12 @@ Dimitri VINET's OS And Programming repository.
 
 # USAGE:
 
-To use a .c file, execute the command:\n
+To use a .c file, execute the command:
+
+    '''
     make <file name (without extension)>
     ex: 
-    '''
+    
     make hello
     '''
     
