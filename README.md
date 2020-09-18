@@ -19,6 +19,7 @@ This unmounts a directory if one with the same name exists and is mounted, delet
 
 
 
+
 To clean all directories and their mounts, use:
 
     make clean
