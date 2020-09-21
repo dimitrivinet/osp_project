@@ -16,6 +16,18 @@ To clean a directory and its mounted filesystem, use:
 
     make clean_<dir name (without _d)>
     
+### Expose a file that shows the results of the "sudo apt update" command when wanting to read from it.
+
+To expose this file, execute the command:
+    
+    make update
+    
+To show the results of "sudo apt update", open another terminal, and execute:
+
+    cat /.../update_d/update
+    
+
+    
 hello: done
 
 to_console: done
