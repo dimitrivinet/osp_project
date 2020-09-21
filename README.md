@@ -24,5 +24,5 @@ write: not begun
 
 folder: not begun
 
-udpdate: done ? cant get current shell pid
+udpdate: done
 
