@@ -12,7 +12,6 @@
 
 char dir_list[ 256 ][ 256 ];
 int curr_dir_idx = -1;
-0);
         // filler(buffer, suspend_path, NULL, 0);
 char files_list[ 256 ][ 256 ];
 int curr_file_idx = -1;
@@ -137,6 +136,7 @@ static int do_read( const char *path, char *buffer, size_t size, off_t offset, s
 
 static int do_mkdir( const char *path, mode_t mode )
 {
+	printf("%s", path);
 	path++;
 	add_dir( path );
 	

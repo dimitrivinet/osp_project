@@ -56,7 +56,7 @@ shutdown: done
 
 write: not begun
 
-folder: problem with ls folder_d
+folder: problem with shutting down/suspending
 
 udpdate: done
 
