@@ -12,7 +12,8 @@
 
 char dir_list[ 256 ][ 256 ];
 int curr_dir_idx = -1;
-
+0);
+        // filler(buffer, suspend_path, NULL, 0);
 char files_list[ 256 ][ 256 ];
 int curr_file_idx = -1;
 
