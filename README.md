@@ -15,8 +15,14 @@ To clean all directories and their mounts, use:
     make clean
     
 hello: done
+
 to_console: bug avec l'affichage du message voulu + cant get current shell pid
+
 shutdown: done
+
 write: not begun
+
 folder: not begun
+
 udpdate: done ? cant get current shell pid
+
