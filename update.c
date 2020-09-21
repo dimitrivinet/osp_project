@@ -15,10 +15,10 @@ static int update_getattr(const char *path, struct stat *stbuf)
 {
 	int res = 0;
 
-	stbuf->st_uid = 0; // The owner of the file/directory is the user who mounted the filesystem
-	stbuf->st_gid = getgid(); // The group of the file/directory is the same as the group of the user who mounted the filesystem
-	stbuf->st_atime = time( NULL ); // The last "a"ccess of the file/directory is right now
-	stbuf->st_mtime = time( NULL ); // The last "m"odification of the file/directory is right now
+	stbuf->st_uid = 0;			  // The owner of the file/directory is the user who mounted the filesystem
+	stbuf->st_gid = getgid();	  // The group of the file/directory is the same as the group of the user who mounted the filesystem
+	stbuf->st_atime = time(NULL); // The last "a"ccess of the file/directory is right now
+	stbuf->st_mtime = time(NULL); // The last "m"odification of the file/directory is right now
 
 	if (strcmp(path, "/") == 0)
 	{
@@ -38,7 +38,7 @@ static int update_getattr(const char *path, struct stat *stbuf)
 }
 
 static int update_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
-						 off_t offset, struct fuse_file_info *fi)
+						  off_t offset, struct fuse_file_info *fi)
 {
 	(void)offset;
 	(void)fi;
@@ -65,16 +65,21 @@ static int update_open(const char *path, struct fuse_file_info *fi)
 }
 
 static int update_read(const char *path, char *buf, size_t size, off_t offset,
-					  struct fuse_file_info *fi)
+					   struct fuse_file_info *fi)
 {
 	(void)fi;
 	if (strcmp(path, update_path) != 0)
 		return -ENOENT;
 
-	char command[500];
-    int pid = get_shell_pid();
-    snprintf(command, sizeof(command), "sudo apt update >> /proc/%d/fd/0", pid);
-    system(command);
+	char buffer[1024];
+	FILE *fp = popen("sudo apt update", "r");
+
+	while (fgets(buffer, 1024, fp) != NULL)
+	{
+		printf("%s", buffer);
+	}
+
+	pclose(fp);
 
 	return 0;
 }
@@ -86,18 +91,7 @@ static struct fuse_operations update_oper = {
 	.read = update_read,
 };
 
-int get_shell_pid()
-{
-    int pid;
-    FILE *fp = popen("pgrep -t pts/0", "r");
-
-    fscanf(fp, "%d", &pid);
-    pclose(fp);
-    return pid;
-}
-
 int main(int argc, char *argv[])
 {
-    
 	return fuse_main(argc, argv, &update_oper, NULL);
 }

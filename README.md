@@ -16,7 +16,7 @@ To clean all directories and their mounts, use:
     
 hello: done
 
-to_console: bug avec l'affichage du message voulu + cant get current shell pid
+to_console: done
 
 shutdown: done
 

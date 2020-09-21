@@ -1,18 +1,25 @@
-%: test hello to_console shutdown write
+%: test hello shutdown write
 
 %: 
 	gcc -Wall $@.c `pkg-config fuse --cflags --libs` -o $@_e
 	-fusermount -u $@_d
 	-rm -rf $@_d
 	mkdir $@_d
-	./$@_e $@_d
+	./$@_e -f $@_d 
+
+to_console:
+	gcc -Wall $@.c `pkg-config fuse --cflags --libs` -o $@_e
+	-fusermount -u $@_d
+	-rm -rf $@_d
+	mkdir $@_d
+	./$@_e -f $@_d -f
 
 update:
 	gcc -Wall update.c `pkg-config fuse --cflags --libs` -o update_e
 	-sudo fusermount -u update_d
 	-rm -rf update_d
 	mkdir update_d
-	sudo ./update_e update_d -o allow_other
+	sudo ./update_e update_d -o allow_other -f
 
 clean_test: 
 	-fusermount -u test_d
@@ -33,6 +40,13 @@ clean_shutdown:
 	-fusermount -u shutdown_d
 	rm -rf shutdown_d
 	rm -f shutdown_e
+
+clean_write:
+
+clean_folder:
+	-fusermount -u folder_d
+	rm -rf folder_d
+	rm -f folder_e
 
 clean_update: 
 	-sudo fusermount -u update_d

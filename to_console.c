@@ -95,12 +95,7 @@ static int to_console_write(const char *path, const char *buffer, size_t size, o
     else
     {
         strncpy(file_content, buffer, 256);
-        char command[500];
-        // char *content = file_content;
-        // char *content = "test";
-        char *content = buffer;
-        snprintf(command, sizeof(command), "echo %s >> /proc/%d/fd/0", buffer, get_shell_pid());
-        system(command);
+        printf(buffer);
         res = size;
     }
 
@@ -115,25 +110,7 @@ static struct fuse_operations to_console_oper = {
     .write = to_console_write,
 };
 
-int get_shell_pid()
-{
-    int pid;
-    FILE *fp = popen("pgrep -t pts/0", "r");
-
-    fscanf(fp, "%d", &pid);
-    pclose(fp);
-    return pid;
-}
-
 int main(int argc, char *argv[])
 {
-    // char *buffer = "test";
-    
-    // char command[300];
-    // snprintf(command, sizeof(command), "echo %s >> /proc/3187/fd/0", buffer);
-    // system(command);
-
-    printf("\n%d\n", get_shell_pid());
-
     return fuse_main(argc, argv, &to_console_oper, NULL);
 }
