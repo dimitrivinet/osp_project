@@ -56,7 +56,7 @@ shutdown: done
 
 write: not begun
 
-folder: problem with shutting down/suspending
+folder: DONE
 
 udpdate: done
 

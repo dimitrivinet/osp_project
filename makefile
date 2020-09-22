@@ -5,7 +5,7 @@
 	-fusermount -u $@_d
 	-rm -rf $@_d
 	mkdir $@_d
-	./$@_e $@_d  -f
+	./$@_e $@_d
 
 to_console:
 	gcc -Wall $@.c `pkg-config fuse --cflags --libs` -o $@_e
