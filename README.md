@@ -34,7 +34,7 @@ Use the file write.c.
 
 ### Use fuse to expose a folder containing files: one to shutdown, one to suspend the computer when written to.
 
-Use the file folder.c.
+Use the file folder.c. Navigate through the directories and write to either shutdown or suspend to shutdown or suspend the computer.
     
 ### Expose a file that shows the results of the "sudo apt update" command when wanting to read from it.
 
