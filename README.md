@@ -42,8 +42,6 @@ Use the file folder.c. Navigate through the directories and write to either shut
 
 Use the file update.c.
     
-To show the results of "sudo apt update", open another terminal, and execute:
-
-    cat /<path>/update_d/update
+To show the results of "sudo apt update", open another terminal and read from the file update in update_d (with cat for example).
 
 Exiting (with Ctrl + C for example) in the original terminal will unmount the filesystem.
