@@ -54,7 +54,7 @@ to_console: done
 
 shutdown: done
 
-write: not begun
+write: DONE MF
 
 folder: DONE
 

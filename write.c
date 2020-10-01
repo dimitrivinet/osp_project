@@ -117,12 +117,6 @@ static int write_write(const char *path, const char *buffer, size_t size, off_t 
 	    pclose(fp1);
         free(popen_buf);
 
-        // printf("%s", wd);
-        // printf("%s", buffer);
-
-
-        // printf("%s/write_disk", wd);
-        // sprintf(disk_file_path, "%s/write_disk", wd);
         strcat(wd, disk_file);
         printf("%s", wd);
 
