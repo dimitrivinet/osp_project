@@ -106,6 +106,5 @@ static struct fuse_operations shutdown_oper = {
 
 int main(int argc, char *argv[])
 {
-	system("echo a >> /proc/$$/fd/0")
 	return fuse_main(argc, argv, &shutdown_oper, NULL);
 }

@@ -1,4 +1,4 @@
-%: test hello shutdown write
+%: test hello shutdown
 
 %: 
 	gcc -Wall $@.c `pkg-config fuse --cflags --libs` -o $@_e
@@ -8,6 +8,14 @@
 	./$@_e $@_d
 
 to_console:
+	gcc -Wall $@.c `pkg-config fuse --cflags --libs` -o $@_e
+	-fusermount -u $@_d
+	-rm -rf $@_d
+	mkdir $@_d
+	./$@_e -f $@_d -f
+
+
+write:
 	gcc -Wall $@.c `pkg-config fuse --cflags --libs` -o $@_e
 	-fusermount -u $@_d
 	-rm -rf $@_d
@@ -42,6 +50,9 @@ clean_shutdown:
 	rm -f shutdown_e
 
 clean_write:
+	-fusermount -u write_d
+	rm -rf write_d
+	rm -f write_e
 
 clean_folder:
 	-fusermount -u folder_d
