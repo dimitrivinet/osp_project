@@ -1,4 +1,4 @@
-%: test hello shutdown
+%: test hello shutdown write
 
 %: 
 	gcc -Wall $@.c `pkg-config fuse --cflags --libs` -o $@_e
@@ -12,15 +12,7 @@ to_console:
 	-fusermount -u $@_d
 	-rm -rf $@_d
 	mkdir $@_d
-	./$@_e -f $@_d -f
-
-
-write:
-	gcc -Wall $@.c `pkg-config fuse --cflags --libs` -o $@_e
-	-fusermount -u $@_d
-	-rm -rf $@_d
-	mkdir $@_d
-	./$@_e -f $@_d -f
+	./$@_e $@_d -f
 
 update:
 	gcc -Wall update.c `pkg-config fuse --cflags --libs` -o update_e
